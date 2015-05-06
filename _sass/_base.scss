@@ -1,204 +1,353 @@
-/**
- * Reset some basic elements
- */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
+@font-face {
+  font-family: 'Source Sans Pro Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlEY6Fu39Tt9XkmtSosaMoEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro Italic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Source Sans Pro Italic'), local('SourceSansPro-It'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoMzpKUtbt71woJ25xl7KOGD0.ttf) format('truetype');
+}
+
+$atc-grey: #585858;
+$atc-white: #ffffff;
+$atc-lightgrey: #cccccc;
+$atc-green: #339933;
+
+header{
+  background-color: $atc-lightgrey;
+}
+
+nav{
+  background-color:$atc-green;
+  padding: 1em 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 
+.mobile-nav-toggle {
+  text-align: center;
+  padding: 1.2em 0 1.2em 0;
+  background-color:$atc-grey;
+  color: white;
+  text-transform: uppercase;
+}
 
-/**
- * Basic styling
- */
+.nav-open {
+  padding: 2em 0 0 0;
+}
+
 body {
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
-    color: $text-color;
-    background-color: $background-color;
-    -webkit-text-size-adjust: 100%;
-}
+  font-family: 'Source Sans Pro Regular';
+  font-weight: 0;
+  color: $atc-grey;
 
+  header, footer, section { @include page-padding(); }
 
+  h1, h2 {
+    text-transform: uppercase;
+  }
 
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
-}
+  h2 {
+    font-size: 1.7em;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
 
-
-
-/**
- * Images
- */
-img {
-    max-width: 100%;
-    vertical-align: middle;
-}
-
-
-
-/**
- * Figures
- */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
-
-/**
- * Lists
- */
-ul, ol {
-    margin-left: $spacing-unit;
-}
-
-li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
+  p {
+    line-height: 1.2em;
+    margin-bottom: 1em;
+    &.large-paragraph {
+      font-size: 1.6em;
     }
-}
+  }
+  .large-icon {
+    font-size: 5em;
+    line-height: 2em;
+  }
 
+  button {
+    @include hollow-button($atc-green, $atc-white);
+  }
 
+  header {
+    .drop-nav {
+       background-color: #585858;
+       padding: 1.2em 0 1.2em 0;
+    }
+  }
 
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-}
+  #our-mission {
+    @include dark-theme();
 
+    background-image: url('../../images/m-forest.jpg');
+    background-position: center;
+    text-align: center;
 
+    h2 {
+      font-size: 1.4em;
+      margin-bottom: 0.3em
+    }
+  }
 
-/**
- * Links
- */
-a {
-    color: $brand-color;
-    text-decoration: none;
+  #volunteer {
+    text-align: center;
 
-    &:visited {
-        color: darken($brand-color, 15%);
+    button {
+      padding-top: 0.8em;
+      padding-bottom: 0.8em;
+    }
+  }
+
+  #donation {
+    @include green-theme();
+    
+    text-align: center;
+    button {
+      @include hollow-button($atc-white, $atc-green);
+    }
+  }
+  #donation-hero {
+    background-image: url('../../images/m-bridge.jpg');
+  }
+  #join-us-hero {
+    background-image: url('../../images/m-moss.jpg');
+  }
+  .hero {
+    background-position:center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: $atc-white;
+    h2 {
+      margin: 0;
+      padding: 2em 0;
+      letter-spacing: 3px;
+      font-size: 2.5em;
+      span {
+        font-size: 0.5em;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  .stat {
+    text-align: center;
+
+    .number {
+      color: $atc-green;
+      font-weight: bold;
+      font-size: 3em;
+
+      margin-bottom: 0.2em;
+    }
+    .title {
+      font-size: 1.2em;
+      color: $atc-lightgrey;
+      margin-bottom: 3em;
+    }
+  }
+
+  #sign-in {
+    @include green-theme();
+
+    .forgot-password {
+      text-align: right;
     }
 
-    &:hover {
-        color: $text-color;
+    h2 {
+      text-transform: none;
+    }
+
+    form {
+      color: $atc-white;
+      background: none;
+
+      a {
         text-decoration: underline;
+      }
+
+      input[type="submit"] {
+        @include hollow-button($atc-white, $atc-green);
+        font-size: 1em;
+      }
     }
-}
-
-
-
-/**
- * Blockquotes
- */
-blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
-    font-size: 18px;
-    letter-spacing: -1px;
-    font-style: italic;
-
-    > :last-child {
-        margin-bottom: 0;
-    }
-}
-
-
-
-/**
- * Code formatting
- */
-pre,
-code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #eef;
-}
-
-code {
-    padding: 1px 5px;
-}
-
-pre {
-    padding: 8px 12px;
-    overflow-x: scroll;
-
-    > code {
-        border: 0;
-        padding-right: 0;
-        padding-left: 0;
-    }
-}
-
-
-
-/**
- * Wrapper
- */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
-    @extend %clearfix;
-
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
-    }
-}
-
-
-
-/**
- * Clearfix
- */
-%clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
+  }
+  #contact-us {
+    .green-text {
+      color: $atc-green;
+      &.link {
+        text-decoration: underline;
+        a {
+          color: $atc-green;
         }
+      }
     }
+
+    h3 {
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+    }
+    h4 {
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    p,
+    a,
+    a:active,
+    a:hover {
+      color: $atc-lightgrey;
+      padding: 0;
+      margin: 0;
+    }
+    form {
+      h3{
+        // font-size: 1em;
+        // line-height: 1em;
+        // padding-top: .75em;
+        // letter-spacing: .2em;
+        // text-align: left;
+        // font-family: 'Oswald', sans-serif;
+        // color: $atc-grey;
+      }
+    }
+  }
+  
+  form {
+    @include base-form();
+
+    color: black;
+    h3 {
+      font-size: 1.1em;
+      font-weight: bolder;
+    }
+  }
+
+  footer {
+    text-transform: uppercase;
+    padding-top:3em;
+    padding-bottom:2em;
+    background-color: $atc-grey;
+      a, h2, {
+        text-decoration:none;
+        color:$atc-white;
+        font-size: 1.2em;
+        line-height: 2em;
+ 
+      }
+
+      p {
+        span{
+          color: $atc-green;
+          padding-top: 5em;
+        }
+
+        a {
+          font-size: 0.7em;
+          color: $atc-lightgrey;
+        }
+      }
+  }
+
+  #map-canvas {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+ul{
+  padding-bottom: 1em; 
+}
+
+header{
+  width: 0 100% 0 100%;
+}
+
+h1{
+  font-size: 1.6em;
+  text-align: center;
+  line-height: 1em;
+  padding-top: .75em;
+  font-family: 'Oswald', sans-serif;
+  color: $atc-green;
+
+    span {
+      font-size: .8em;
+      letter-spacing: .2em;
+      text-align: center;
+      color: $atc-grey;
+      width: 100%;
+      display: block;
+    }
+}
+
+.drop-nav{
+  width: 0 100% 0 100%;
+}
+
+a,
+a:active,
+a:hover,
+a:visited,
+a:link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.navigation-links{
+  color: #FFFFFF;
+}
+
+.logo-container{
+  width: 150px;
+  margin: 0 auto;
+}
+
+.socialmedia{
+  padding-top:10%;
+  color:$atc-lightgrey;
+  text-align:center;
+}
+
+.legal-links{
+  padding-top: 2em;
+  font-size: .75em;
+  text-align: center;
+}
+
+#mobile-nav {
+  position: absolute;
+  top: -100px;
+}
+
+#nav-open {
+  display: none;
+}
+
+#mobile-nav:checked ~ #nav-open {
+  display: block;
+
+}
+
+footer {
+  i {
+  font-size: 3em;
+  }
+}
+
+@media screen and (min-width: 600px){
+
+.socialmedia{
+  margin-bottom: 1em;
+}
+
+footer {
+  i {
+  font-size: 6em;
+  }
+  }
 }
