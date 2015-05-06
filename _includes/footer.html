@@ -2,12 +2,15 @@
   <section id="join-us">
   </section>
     <ul>
-        <li><a href="null">Our Mission</a></li>
-        <li><a href="null">Get Involved</a></li>
-        <li><a href="null">About</a></li>
-        <li><a href="null">News</a></li>
-        <li><a href="null">Donate</a></li>
-        <li><a href="null">Sign in</a></li>
+        {% for page in site.pages %}
+            {% if page.title %}
+                <li>
+                    <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">
+                        {{ page.title }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
     </ul> 
 
     <p>
@@ -28,43 +31,6 @@
     </ul> 
 
 </footer>
-<!-- <div class="wrapper">
-  <div class="icons">
-    <i class="icon-phone-icon"></i> 
-    <span class="names">Phone</span>
-  </div>   
-  <div class="icons" a href="facebook.com">
-    <a href="http://www.facebook.com"></a>
-    <i class="icon-facebook"></i> 
-    <span class="names">Facebook</span>
-  </div>
-  <div class="icons">
-    <a href="http://www.twitter.com"></a>
-    <i class="icon-twitter"></i> 
-    <span class="names">Twitter</span>
-  </div>
-  <div class="icons">
-    <a href="http://www.vimeo.com"></a>
-    <i class="icon-vimeo"></i> 
-    <span class="names">Vimeo</span>
-  </div> 
-  <div class="icons">
-    <a href="http://www.behance.com"></a>
-    <i class="icon-behance"></i> 
-    <span class="names">Behance</span>
-  </div>
-  <div class="icons">
-    <a href="http://www.linkedin.com"></a>
-    <i class="icon-linkedin"></i> 
-    <span class="names">Linked In</span>
-  </div>
-  <div class="icons">
-    <a href="http://www.pinterest.com"></a>
-    <i class="icon-pinterest"></i> 
-    <span class="names">Pinterest</span>
-    test
-  </div>   
-</div> -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
 function initialize() {
